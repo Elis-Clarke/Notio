@@ -70,15 +70,16 @@ function setUpNext() {
 			}
 		}
 	} else if (mark == "wrong") {
-		if (String(activeNote)== "a" || String(activeNote)== "e"){
-			document.getElementById("p1").innerHTML = `Incorrect that was an ${String(activeNote)).toUpperCase()}`;
-		} else {
-			document.getElementById("p1").innerHTML = `Incorrect that was a ${String(activeNote)).toUpperCase()}`;
+		if (randomElement[2]=="a" || randomElement[2]=="e"){
+			document.getElementById("p1").innerHTML = `Incorrect that was an ${String(randomElement[2]).toUpperCase()}`;
+		}
+		else {
+			document.getElementById("p1").innerHTML = `Incorrect that was a ${String(randomElement[2]).toUpperCase()}`;
 		}
 		incorrectStreak+=1
 		correctStreak=0
 		document.getElementById("p3").innerHTML = `Your streak is ${String(incorrectStreak)} wrong in a row`;
-		document.getElementById("prevAudio").src = "notio_media/sound/BUZZER.WAV";
+		document.getElementById("prevAudio").src = "notio_media/sound/BUZZER.wav";
 		wrongInRow += 1
 		rightInRow = 0
 		if (wrongInRow == 5) {
