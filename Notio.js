@@ -70,7 +70,11 @@ function setUpNext() {
 			}
 		}
 	} else if (mark == "wrong") {
-		document.getElementById("p1").innerHTML = `Incorrect that was a ${String(randomElement[2]).toUpperCase()}`;
+		if (String(activeNote)== "a" || String(activeNote)== "e"){
+			document.getElementById("p1").innerHTML = `Incorrect that was an ${String(activeNote)).toUpperCase()}`;
+		} else {
+			document.getElementById("p1").innerHTML = `Incorrect that was a ${String(activeNote)).toUpperCase()}`;
+		}
 		incorrectStreak+=1
 		correctStreak=0
 		document.getElementById("p3").innerHTML = `Your streak is ${String(incorrectStreak)} wrong in a row`;
