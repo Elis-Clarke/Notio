@@ -28,20 +28,24 @@ let rightInRow = 0;
 let correctStreak =0;
 let wrongInRow = 0;
 let incorrectStreak =0;
-noteSelected = 'r';
+let noteSelected = 'r';
+let previousNote = 's';
+let activeNote = 't';
 
 function generateNote() {
-	if (level-2<=0) {
-		randomElement = allNotes[Math.floor(Math.random()*(level+3))];
-	} else if (level==18) {
-		randomElement = allNotes[Math.floor(Math.random()*(20))];
-	} else {
-		randomElement = allNotes[(level-2)+Math.floor(Math.random() * 5)];
+	previousNote = activeNote;
+	while (previousNote === activeNote){
+		if (level-3<=0) {
+			randomElement = allNotes[Math.floor(Math.random()*(level+2.99999999))];
+		} else if (level==18) {
+			randomElement = allNotes[Math.floor(Math.random()*(18.99999999))];
+		} else {
+			randomElement = allNotes[(level-3)+Math.floor(Math.random() * 5.99999999)];
+		}
+		activeNote = randomElement[2];
 	}
-	
 	document.getElementById("myImage").src = randomElement[0];
 	//document.getElementById("audioSource").src = randomElement[1];
-	activeNote = randomElement[2];
 	document.getElementById("p2").innerHTML = `Current level = ${String(level+1)} / 19`;
 };
 
@@ -79,7 +83,7 @@ function setUpNext() {
 		incorrectStreak+=1
 		correctStreak=0
 		document.getElementById("p3").innerHTML = `Your streak is ${String(incorrectStreak)} wrong in a row`;
-		document.getElementById("prevAudio").src = "notio_media/sound/BUZZER.wav";
+		document.getElementById("prevAudio").src = "notio_media/sound/BUZZER.WAV";
 		wrongInRow += 1
 		rightInRow = 0
 		if (wrongInRow == 5) {
