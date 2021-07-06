@@ -74,7 +74,7 @@ function setUpNext() {
 		incorrectStreak+=1
 		correctStreak=0
 		document.getElementById("p3").innerHTML = `Your streak is ${String(incorrectStreak)} wrong in a row`;
-		document.getElementById("prevAudio").src = "notio_media/sound/BUZZER.wav";
+		document.getElementById("prevAudio").src = "notio_media/sound/BUZZER.WAV";
 		wrongInRow += 1
 		rightInRow = 0
 		if (wrongInRow == 5) {
