@@ -32,11 +32,11 @@ noteSelected = 'r';
 
 function generateNote() {
 	if (level-2<=0) {
-		randomElement = allNotes[Math.floor(Math.random()*(level+2.99999999))];
+		randomElement = allNotes[Math.floor(Math.random()*(level+3))];
 	} else if (level==18) {
-		randomElement = allNotes[Math.floor(Math.random()*(19.99999999))];
+		randomElement = allNotes[Math.floor(Math.random()*(20))];
 	} else {
-		randomElement = allNotes[(level-2)+Math.floor(Math.random() * 4.99999999)];
+		randomElement = allNotes[(level-2)+Math.floor(Math.random() * 5)];
 	}
 	
 	document.getElementById("myImage").src = randomElement[0];
