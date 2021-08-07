@@ -36,18 +36,34 @@ function generateNote() {
 	previousNote = activeNote;
 	while (previousNote === activeNote){
 		if (level-3<=0) {
-			randomElement = allNotes[Math.floor(Math.random()*(level+2.99999999))];
+			randomElement = allNotes[Math.floor(Math.random()*(level+3))];
 		} else if (level==18) {
-			randomElement = allNotes[Math.floor(Math.random()*(18.99999999))];
+			randomElement = allNotes[Math.floor(Math.random()*(19))];
 		} else {
-			randomElement = allNotes[(level-3)+Math.floor(Math.random() * 5.99999999)];
+			randomElement = allNotes[(level-3)+Math.floor(Math.random() * 6)];
 		}
 		activeNote = randomElement[2];
 	}
 	document.getElementById("myImage").src = randomElement[0];
-	//document.getElementById("audioSource").src = randomElement[1];
 	document.getElementById("p2").innerHTML = `Current level = ${String(level+1)} / 19`;
 };
+
+function specialGen() {
+	previousNote = activeNote;
+	randomElement = allNotes[level+2];
+	activeNote = randomElement[2];
+	document.getElementById("myImage").src = randomElement[0];
+	document.getElementById("p2").innerHTML = `Current level = ${String(level+1)} / 19`;
+}
+
+function firstGenerateNote() {
+	randomElement = allNotes[0];
+	activeNote = randomElement[2];
+	previousNote = activeNote;
+	document.getElementById("prevImage").src = randomElement[0];
+	document.getElementById("myImage").src = randomElement[0];
+	document.getElementById("p2").innerHTML = `Current level = ${String(level+1)} / 19`;
+}
 
 function markAnswer() {
 	if (String(noteSelected) == String(activeNote)) {
@@ -59,12 +75,16 @@ function markAnswer() {
 }
 
 function setUpNext() {
+	document.getElementById("prevImage").src = randomElement[0];
 	if (mark == "right") {
-		document.getElementById("p1").innerHTML = "Correct";
+		document.getElementById("prevCaption").innerHTML = "Correct";
 		correctStreak+=1
 		incorrectStreak=0
+		
+		document.getElementById("prevImage").style.border = "10px solid green";
 		document.getElementById("p3").innerHTML = `Your streak is ${String(correctStreak)} right in a row`;
 		document.getElementById("prevAudio").src = randomElement[1];
+		
 		rightInRow += 1
 		wrongInRow = 0
 		if (rightInRow == 5) {
@@ -72,31 +92,42 @@ function setUpNext() {
 			if (level < 18){
 				level += 1
 			}
+			if (level <= 17){
+				specialGen()
+			} else {
+				generateNote()
+			}
+		} else {
+			generateNote()
 		}
 	} else if (mark == "wrong") {
-		if (randomElement[2]=="a" || randomElement[2]=="e"){
-			document.getElementById("p1").innerHTML = `Incorrect that was an ${String(randomElement[2]).toUpperCase()}`;
+		if (randomElement[2]=="a" || randomElement[2]=="e" || randomElement[2]=="f"){
+			document.getElementById("prevCaption").innerHTML = `Incorrect that was an ${String(randomElement[2]).toUpperCase()}`;
 		}
 		else {
-			document.getElementById("p1").innerHTML = `Incorrect that was a ${String(randomElement[2]).toUpperCase()}`;
+			document.getElementById("prevCaption").innerHTML = `Incorrect that was a ${String(randomElement[2]).toUpperCase()}`;
 		}
 		incorrectStreak+=1
 		correctStreak=0
+		
+		document.getElementById("prevImage").style.border = "10px solid red";
 		document.getElementById("p3").innerHTML = `Your streak is ${String(incorrectStreak)} wrong in a row`;
 		document.getElementById("prevAudio").src = "notio_media/sound/BUZZER.WAV";
+		
 		wrongInRow += 1
 		rightInRow = 0
+		
 		if (wrongInRow == 5) {
 			wrongInRow = 0
 			if (level > 0) {
 				level -= 1
 			}
 		}
+		generateNote()
 	} else {
 		return "nothing"
+		generateNote()
 	}
-	
-	generateNote()
 }
 
-generateNote()
+firstGenerateNote()

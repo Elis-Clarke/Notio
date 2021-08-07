@@ -1,0 +1,53 @@
+head {
+	background-color: lightblue;
+	text-align: center;
+	min-width: 500px;
+	font-size: 24px;
+}
+
+body {
+	background-color: lightblue;
+	text-align: center;
+	min-width: 500px;
+	font-size: 16px;
+}
+
+#prevImage {
+	border: 10px solid;
+	background-image: prevImage;
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+}
+
+#myImage {
+	border: 10px solid;
+	background-image: myImage;
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+}
+
+.caption {
+	display: block;
+	position: relative;
+	caption-side: bottom;
+	font-size: 18px;
+    width: 200px;
+    height: 25px;
+    color: black;
+    align:center;
+    font-weight: bold;
+}
+
+.column-a {
+	display: inline-table;
+	flex:50%;
+	padding: 5px;
+}
+
+.column-b {
+	display: inline-table;
+	flex:50%;
+	padding: 5px;
+}

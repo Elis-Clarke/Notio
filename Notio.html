@@ -1,43 +1,49 @@
-<!DOCTYPE html>	
+<!DOCTYPE html>
 <!--Code by Elis Clarke-->
-<html>			
-	<head>		
+<html>
+	<head>
 		<title>Notio</title>
-	</head>		
-				
-	<body>			
-				
+	</head>
+	
+	<body>
+		
 		<h1>Notio</h1>
 		<div id="introduction">
 			<h3>Learn to read music!</h3>
 			<p id="p1"> Click on the letter name underneath the image.  If you don't know it - <em>just guess!</em> You'll soon know them all!</p>
 			
-		</div>	
+		</div>
 				
 		<div id="learn to read music">
-				
-			<section>
+			
+			<section id="images">
 				
 				<p id="p2">Current level = 1<p>
 				
-				<p id="p3">Current streak = 0<p>
-			
+				<p id="p3">The first level will only contain a C, D or E<p>
+				
 				<h3>Which note is this?</h3>
-				<img id="myImage" src="noteImage">
-				<p>
-				<!--
-				<audio id="audioSource" src="noteAudio" type="audio/WAV">
-					Your browser does not support the audio element.
-				</audio> 
-				-->
+				
+
+				<div class="column-a">
+					<img id="prevImage" src="noteImage">
+					<p id="prevCaption" class='caption'>"What note is this?"</p></img>
+				</div>
+				
+				<div class="column-b">
+					<img id="myImage" src="noteImage">
+					<p class='caption'>"What note is this?"</p></img>
+				</div>
+				
 				<audio autoplay id="prevAudio" src="noteAudio" type="audio/WAV">
 					Your browser does not support the audio element.
-				</audio> 
-				
-			</section>
+				</audio>
 				
 				<p>select a note</p>
-			<section
+				
+			</section>
+			
+			<section id="buttons">
 				<!--buttons-->
 				
 				<input type="button" value=" C " onclick="noteSelected='c'; markAnswer();" />
@@ -49,10 +55,9 @@
 				<input type="button" value=" A " onclick="noteSelected='a'; markAnswer();" />
 				<input type="button" value=" B " onclick="noteSelected='b'; markAnswer();" />
 			</section>
-				
-			<p>	
-				
-		</div>	
-		<script src="Notio.js"></script> 
-	</body>		
-</html>			
+			
+		</div>
+		<script src="Notio.js"></script>
+		<link href="Notio.css" rel="stylesheet">
+	</body>
+</html>
